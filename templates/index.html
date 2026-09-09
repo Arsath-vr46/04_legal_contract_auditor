@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MythosEngine AI — Tabletop RPG &amp; Game Lore Master</title>
+<title>LexGuard AI — Commercial Contract Risk Auditor</title>
 <style>
 :root {
-  --bg: #EDE4D2;
-  --bg-panel: #E4D8BE;
-  --fg: #2B2620;
-  --fg-dim: #6B5D46;
-  --accent: #8B3A2F;
-  --border: #8B7B5C;
-  --caret: #2B2620;
-  --font: 'Courier New', 'Consolas', monospace;
+  --bg: #0D1117;
+  --bg-panel: #0A0E14;
+  --fg: #00FF66;
+  --fg-dim: #0B8A3E;
+  --accent: #00FF66;
+  --border: #0F5C2E;
+  --caret: #00FF66;
+  --font: 'Courier New', Consolas, Menlo, monospace;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--fg); font-family: var(--font); }
@@ -74,23 +74,23 @@ button:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent);
 }
 </style>
 </head>
-<body class="paper">
+<body class="crt">
 <div class="wrap">
-  <pre class="banner">+-----------------+
-| MythosEngine AI |
-+-----------------+</pre>
+  <pre class="banner">╔═════════════╗
+║ LexGuard AI ║
+╚═════════════╝</pre>
   <div class="title-row">
-    <h1>MythosEngine AI — Tabletop RPG &amp; Game Lore Master</h1>
+    <h1>LexGuard AI — Commercial Contract Risk Auditor</h1>
     <span class="status-line" id="status-line">READY</span>
   </div>
-  <p class="tagline">SCOPE: NPC dialogue trees / quest generation / d20-d100 rolls / worldbuilding</p>
+  <p class="tagline">SCOPE: Indemnity clauses / non-compete review / GDPR liability / termination terms</p>
 
   <div class="terminal">
     <div class="chat-log" id="chat-log">
       <div class="msg"><span class="msg-prefix">[00:00:00] SYSTEM&gt;</span><span class="msg-body"> BOOT SEQUENCE COMPLETE.</span></div>
       <div class="msg"><span class="msg-prefix">[00:00:00] SYSTEM&gt;</span><span class="msg-body"> DOMAIN KNOWLEDGE BASE ... LOADED.</span></div>
       <div class="msg"><span class="msg-prefix">[00:00:00] SYSTEM&gt;</span><span class="msg-body"> MODEL gemini-2.5-flash ... ONLINE.</span></div>
-      <div class="msg"><span class="msg-prefix">[00:00:00] MythosEngine AI&gt;</span><span class="msg-body"> Ready. Type your query below.<span class="cursor"></span></span></div>
+      <div class="msg"><span class="msg-prefix">[00:00:00] LexGuard AI&gt;</span><span class="msg-body"> Ready. Type your query below.<span class="cursor"></span></span></div>
     </div>
     <div class="input-row">
       <textarea id="chat-input" rows="2" placeholder="Type a message... (Enter to send, Shift+Enter for newline)"></textarea>
@@ -100,7 +100,7 @@ button:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent);
       </div>
     </div>
   </div>
-  <p class="footer-note">MythosEngine AI // no external database -- history lives in this browser tab and is sent with each request.</p>
+  <p class="footer-note">LexGuard AI // no external database -- history lives in this browser tab and is sent with each request.</p>
 </div>
 
 <script>
@@ -157,7 +157,7 @@ button:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent);
       if (!res.ok || data.error) {
         appendLine('SYSTEM', data.error || ('HTTP ' + res.status), true);
       } else {
-        appendLine("MythosEngine AI", data.reply, false);
+        appendLine("LexGuard AI", data.reply, false);
         history.push({ role: 'user', parts: [text] });
         history.push({ role: 'model', parts: [data.reply] });
       }

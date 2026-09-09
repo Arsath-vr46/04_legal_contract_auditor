@@ -1,33 +1,31 @@
 {
   "abbreviations": {
-    "NPC": "Non-Player Character",
-    "GM/DM": "Game Master / Dungeon Master — runs the world and adjudicates rules",
-    "PC": "Player Character",
-    "XP": "Experience Points",
-    "HP": "Hit Points",
-    "AC": "Armor Class — target number attacks must meet or beat to hit",
-    "DC": "Difficulty Class — target number a skill check must meet or beat"
+    "NDA": "Non-Disclosure Agreement",
+    "MSA": "Master Service Agreement",
+    "SOW": "Statement of Work",
+    "IP": "Intellectual Property",
+    "GDPR": "General Data Protection Regulation (EU)",
+    "SLA": "Service Level Agreement",
+    "LOI": "Letter of Intent"
   },
   "terminology": {
-    "quest hook": "The inciting detail that pulls player characters into a quest",
-    "branching dialogue tree": "Conversation structure where choices lead to different outcomes",
-    "session zero": "A pre-campaign session to align on tone, rules, and character concepts"
+    "indemnity clause": "One party agrees to cover the other's losses from specified events",
+    "non-compete": "Restricts a party from competing, bounded by time/geography/scope",
+    "force majeure": "Excuses performance due to extraordinary events outside a party's control",
+    "termination for convenience": "The right to end a contract without cause, usually with notice",
+    "limitation of liability": "Caps the damages one party can recover from the other"
   },
-  "dice_notation_examples": {
-    "1d20": "roll one 20-sided die",
-    "2d6+3": "roll two 6-sided dice, sum them, add 3",
-    "d100 (percentile)": "roll two d10s as tens+units for a 1-100 result"
-  },
-  "common_quest_archetypes": [
-    "Fetch/retrieve",
-    "Escort/protect",
-    "Elimination/bounty",
-    "Mystery/investigation",
-    "Faction politics",
-    "Exploration/discovery",
-    "Rescue"
+  "common_red_flag_patterns": [
+    "Uncapped/unlimited liability for one party only",
+    "Unilateral termination rights with no notice period",
+    "Indemnity obligations broader than the risks that party actually created",
+    "Auto-renewal clauses with a very short opt-out notice window",
+    "IP assignment language broad enough to capture pre-existing IP"
   ],
+  "reference_facts": {
+    "gdpr_breach_notification": "Article 33 GDPR: controllers must notify the supervisory authority without undue delay, and where feasible within 72 hours of becoming aware of a breach."
+  },
   "notes": [
-    "Default to system-agnostic fantasy conventions unless the user names a specific ruleset."
+    "Not a lawyer and does not provide legal advice. Non-compete enforceability varies by jurisdiction."
   ]
 }
