@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MythosEngine AI — Tabletop RPG &amp; Game Lore Master</title>
+<style>
+:root {
+  --bg: #EDE4D2;
+  --bg-panel: #E4D8BE;
+  --fg: #2B2620;
+  --fg-dim: #6B5D46;
+  --accent: #8B3A2F;
+  --border: #8B7B5C;
+  --caret: #2B2620;
+  --font: 'Courier New', 'Consolas', monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--fg); font-family: var(--font); }
+body { display: flex; flex-direction: column; min-height: 100vh; position: relative; overflow-x: hidden; }
+body.crt::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50;
+  background: repeating-linear-gradient(to bottom, rgba(0,0,0,0.0) 0px, rgba(0,0,0,0.15) 1px, rgba(0,0,0,0.0) 2px);
+  mix-blend-mode: multiply;
+}
+body.crt::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 51;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%);
+}
+body.paper::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50;
+  background: repeating-linear-gradient(to bottom, rgba(43,38,32,0.05) 0px, rgba(43,38,32,0.05) 1px, transparent 1px, transparent 28px);
+}
+body.paper::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 51;
+  background: radial-gradient(ellipse at center, rgba(43,38,32,0) 60%, rgba(43,38,32,0.12) 100%);
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+.wrap { max-width: 860px; width: 100%; margin: 0 auto; padding: 24px 16px 16px; display: flex; flex-direction: column; flex: 1; min-height: 100vh; position: relative; z-index: 1; }
+.banner { margin: 0 0 4px; font-size: 14px; line-height: 1.2; white-space: pre; color: var(--accent); overflow-x: auto; }
+.title-row { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 4px; flex-wrap: wrap; gap: 4px; }
+.title-row h1 { font-size: 16px; margin: 0; letter-spacing: 0.5px; font-weight: normal; }
+.tagline { font-size: 12px; color: var(--fg-dim); margin: 0 0 16px; }
+.status-line { font-size: 12px; color: var(--fg-dim); }
+.status-line.busy { color: var(--accent); }
+
+.terminal { flex: 1; display: flex; flex-direction: column; border: 1px solid var(--border); background: var(--bg-panel); min-height: 420px; }
+.chat-log { flex: 1; overflow-y: auto; padding: 12px 14px; font-size: 14px; line-height: 1.55; }
+.msg { margin-bottom: 8px; white-space: pre-wrap; word-break: break-word; }
+.msg-prefix { color: var(--fg-dim); margin-right: 4px; }
+.msg-user .msg-prefix { color: var(--accent); }
+.msg-error .msg-body { color: #ff5c5c; }
+.msg-body { color: var(--fg); }
+
+.input-row { display: flex; border-top: 1px solid var(--border); }
+textarea#chat-input { flex: 1; resize: none; background: transparent; border: none; outline: none; color: var(--fg); font-family: var(--font); font-size: 14px; padding: 10px 12px; min-height: 46px; max-height: 140px; }
+textarea#chat-input::placeholder { color: var(--fg-dim); }
+.btn-col { display: flex; flex-direction: column; border-left: 1px solid var(--border); }
+button { font-family: var(--font); font-size: 12px; letter-spacing: 0.5px; background: transparent; color: var(--fg); border: none; border-bottom: 1px solid var(--border); padding: 8px 14px; cursor: pointer; }
+button:last-child { border-bottom: none; }
+button:hover:not(:disabled) { background: var(--accent); color: var(--bg); }
+button:disabled { opacity: 0.4; cursor: default; }
+button:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.cursor { display: inline-block; width: 0.55em; height: 1em; background: var(--caret); animation: blink 1s steps(1) infinite; vertical-align: -0.15em; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.footer-note { font-size: 11px; color: var(--fg-dim); margin-top: 8px; text-align: center; }
+
+@media (max-width: 560px) {
+  .banner { font-size: 10px; }
+  .terminal { min-height: 320px; }
+}
+</style>
+</head>
+<body class="paper">
+<div class="wrap">
+  <pre class="banner">+-----------------+
+| MythosEngine AI |
++-----------------+</pre>
+  <div class="title-row">
+    <h1>MythosEngine AI — Tabletop RPG &amp; Game Lore Master</h1>
+    <span class="status-line" id="status-line">READY</span>
+  </div>
+  <p class="tagline">SCOPE: NPC dialogue trees / quest generation / d20-d100 rolls / worldbuilding</p>
+
+  <div class="terminal">
+    <div class="chat-log" id="chat-log">
+      <div class="msg"><span class="msg-prefix">[00:00:00] SYSTEM&gt;</span><span class="msg-body"> BOOT SEQUENCE COMPLETE.</span></div>
+      <div class="msg"><span class="msg-prefix">[00:00:00] SYSTEM&gt;</span><span class="msg-body"> DOMAIN KNOWLEDGE BASE ... LOADED.</span></div>
+      <div class="msg"><span class="msg-prefix">[00:00:00] SYSTEM&gt;</span><span class="msg-body"> MODEL gemini-2.5-flash ... ONLINE.</span></div>
+      <div class="msg"><span class="msg-prefix">[00:00:00] MythosEngine AI&gt;</span><span class="msg-body"> Ready. Type your query below.<span class="cursor"></span></span></div>
+    </div>
+    <div class="input-row">
+      <textarea id="chat-input" rows="2" placeholder="Type a message... (Enter to send, Shift+Enter for newline)"></textarea>
+      <div class="btn-col">
+        <button id="send-btn">SEND</button>
+        <button id="clear-btn">CLEAR</button>
+      </div>
+    </div>
+  </div>
+  <p class="footer-note">MythosEngine AI // no external database -- history lives in this browser tab and is sent with each request.</p>
+</div>
+
+<script>
+(function () {
+  var chatLog = document.getElementById('chat-log');
+  var input = document.getElementById('chat-input');
+  var sendBtn = document.getElementById('send-btn');
+  var clearBtn = document.getElementById('clear-btn');
+  var statusEl = document.getElementById('status-line');
+  var history = [];
+
+  function ts() {
+    var d = new Date();
+    function p(n) { return String(n).padStart(2, '0'); }
+    return '[' + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds()) + ']';
+  }
+
+  function appendLine(who, text, isError) {
+    var line = document.createElement('div');
+    line.className = 'msg' + (isError ? ' msg-error' : (who === 'YOU' ? ' msg-user' : ''));
+    var prefix = document.createElement('span');
+    prefix.className = 'msg-prefix';
+    prefix.textContent = ts() + ' ' + who + '> ';
+    var body = document.createElement('span');
+    body.className = 'msg-body';
+    body.textContent = ' ' + text;
+    line.appendChild(prefix);
+    line.appendChild(body);
+    chatLog.appendChild(line);
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  function setBusy(busy) {
+    sendBtn.disabled = busy;
+    clearBtn.disabled = busy;
+    input.disabled = busy;
+    statusEl.textContent = busy ? 'TRANSMITTING...' : 'READY';
+    statusEl.classList.toggle('busy', busy);
+  }
+
+  async function send() {
+    var text = input.value.trim();
+    if (!text) return;
+    appendLine('YOU', text, false);
+    input.value = '';
+    setBusy(true);
+    try {
+      var res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, history: history })
+      });
+      var data = await res.json().catch(function () { return {}; });
+      if (!res.ok || data.error) {
+        appendLine('SYSTEM', data.error || ('HTTP ' + res.status), true);
+      } else {
+        appendLine("MythosEngine AI", data.reply, false);
+        history.push({ role: 'user', parts: [text] });
+        history.push({ role: 'model', parts: [data.reply] });
+      }
+    } catch (err) {
+      appendLine('SYSTEM', 'Connection failed: ' + err.message, true);
+    } finally {
+      setBusy(false);
+      input.focus();
+    }
+  }
+
+  sendBtn.addEventListener('click', send);
+  clearBtn.addEventListener('click', function () {
+    history = [];
+    chatLog.innerHTML = '';
+    appendLine('SYSTEM', 'Session cleared. Memory buffer reset.', false);
+  });
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      send();
+    }
+  });
+  window.addEventListener('load', function () { input.focus(); });
+})();
+</script>
+</body>
+</html>

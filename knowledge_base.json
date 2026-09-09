@@ -1,0 +1,33 @@
+{
+  "abbreviations": {
+    "NPC": "Non-Player Character",
+    "GM/DM": "Game Master / Dungeon Master — runs the world and adjudicates rules",
+    "PC": "Player Character",
+    "XP": "Experience Points",
+    "HP": "Hit Points",
+    "AC": "Armor Class — target number attacks must meet or beat to hit",
+    "DC": "Difficulty Class — target number a skill check must meet or beat"
+  },
+  "terminology": {
+    "quest hook": "The inciting detail that pulls player characters into a quest",
+    "branching dialogue tree": "Conversation structure where choices lead to different outcomes",
+    "session zero": "A pre-campaign session to align on tone, rules, and character concepts"
+  },
+  "dice_notation_examples": {
+    "1d20": "roll one 20-sided die",
+    "2d6+3": "roll two 6-sided dice, sum them, add 3",
+    "d100 (percentile)": "roll two d10s as tens+units for a 1-100 result"
+  },
+  "common_quest_archetypes": [
+    "Fetch/retrieve",
+    "Escort/protect",
+    "Elimination/bounty",
+    "Mystery/investigation",
+    "Faction politics",
+    "Exploration/discovery",
+    "Rescue"
+  ],
+  "notes": [
+    "Default to system-agnostic fantasy conventions unless the user names a specific ruleset."
+  ]
+}
